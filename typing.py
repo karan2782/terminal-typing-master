@@ -3,6 +3,11 @@ import json
 from time import *
 
 def load_words():
+    with open("general_words.json", "w") as para:
+        stories = {
+    "words":["This is a modern-day story about a little girl with a big secret she cant tell anyone about. When her teacher finds out her secret, they work together to fix the issue. This story is a good choice for absolute beginners, because it uses only the present tense. Its also written in very basic English with simple vocabulary and short sentences.", "In this story, an old man sets out to ask an African king to dig some wells in his village when their water runs dry. But first, he teaches the king a lesson in humility by showing him how all people help each other. Read the story to see how the clever old man gets the king to do as he asks!",  "This very short story from India was originally written in Sanskrit an ancient language. When a group of doves is caught in a hunters net, they must work together as a team to escape from the hunters clutches. You can listen to a reading of the story as you read along on this website.", "This modern story is about a young woman named Penny who is anxious about going to her familys annual reunion barbecue. But despite screaming children and arguing cousins, Penny ends up happy that she came to the reunion when she starts a conversation with a handsome man. The story is written in simple English, using only the present tense, so its perfect for beginners."]
+}
+        json.dump(stories, para)
     with open("general_words.json", "r") as para:
         paras = json.load(para)
     
@@ -38,23 +43,23 @@ def typing_time(initial, end, user_para):
 
     return total_time, speed
 
-    
-
-
-
-    
-print(load_words())
-initial_time = time()
-user_input = input("Enter : ")
-end_time = time()
-
-total_time, speed = typing_time(initial_time, end_time, user_input)
-
-update_leadorboard(len(user_input), total_time, speed)
-show_leaderboard()
-
-
-
-    
-
-
+user_name = input("Enter your name : ")
+while True:
+    print("1. Typing Test")
+    print("2. Show Leaderboard")
+    print("3. Exit")
+    choices = int(input("Choose 1/2/3 : "))
+    if choices==1:
+        paragraph = load_words()
+        print(paragraph)
+        start = time()
+        user_input = input("Write : ")
+        end = time()
+        t_time, speeds = typing_time(start, end, user_input)
+        update_leadorboard(len(user_input),t_time, speeds)
+    elif choices==2:
+        show_leaderboard()
+    elif choices==3:
+        break
+    else:
+        print("Enter valid entry")
