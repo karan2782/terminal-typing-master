@@ -27,6 +27,7 @@ def show_leaderboard():
         d = json.load(leader)
     
     for i in d:
+        print("|")
         print(f"{i} : {d[i]}")
 
 
@@ -53,13 +54,21 @@ while True:
         paragraph = load_words()
         print(paragraph)
         start = time()
+        print()
         user_input = input("Write : ")
         end = time()
         t_time, speeds = typing_time(start, end, user_input)
         update_leadorboard(len(user_input),t_time, speeds)
+        print()
     elif choices==2:
+        print(f"{user_name} your leaderboard")
         show_leaderboard()
+        print()
     elif choices==3:
         break
     else:
         print("Enter valid entry")
+
+print()
+print("\t \tWelcome again")
+print()
