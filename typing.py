@@ -1,6 +1,7 @@
 import random
 import json
 from time import *
+import keyboard
 
 def load_words():
     with open("general_words.json", "w") as para:
@@ -20,35 +21,40 @@ def load_words():
 
 def update_leadorboard(word_typed, total_time, wpm):
     with open("leaderboard.json", "w") as leader:
-        leader_b = json.dump({"Words Typed":word_typed, "Time Taken":total_time, "Words Per Sec": wpm }, leader)
+        leader_b = json.dump({"Words Typed":word_typed, "Time Taken":f"{total_time} mins", "Words Per Min": wpm }, leader)
 
 def show_leaderboard():
     with open("leaderboard.json", "r") as leader:
         d = json.load(leader)
     
     for i in d:
-        print("|")
         print(f"{i} : {d[i]}")
 
 
 def typing_time(initial, end, user_para):
     starting = round(initial, 2)
     ending = round(end, 2)
-    total_time = ending - starting
-    total_time = total_time//60
+    total_time_seconds = ending - starting
+    total_time_mins = round(total_time_seconds / 60, 2)
 
     dist = len(user_para)
     times = ending - starting
-    speed = dist / times
-    speed = int(speed) 
+    speed_wps = dist / times
+    speed_wpm = int(speed_wps)  * 60 
 
-    return total_time, speed
+    return total_time_mins , speed_wpm
 
 user_name = input("Enter your name : ")
 while True:
     print("1. Typing Test")
     print("2. Show Leaderboard")
     print("3. Exit")
+
+    if keyboard.is_pressed('ctrl+q'):
+        print("Exiting typing")
+        print()
+        break
+
     choices = int(input("Choose 1/2/3 : "))
     if choices==1:
         paragraph = load_words()
@@ -66,6 +72,7 @@ while True:
         print()
     elif choices==3:
         break
+    
     else:
         print("Enter valid entry")
 
