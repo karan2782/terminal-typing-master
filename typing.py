@@ -85,5 +85,5 @@ while True:
         print("Enter valid entry")
 
 print()
-print("\t \tWelcome again")
+print("\t \t Thank You")
 print()
