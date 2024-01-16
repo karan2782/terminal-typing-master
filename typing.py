@@ -1,7 +1,6 @@
 import random
 import json
 from time import *
-import keyboard
 
 # this function is giving paragraph so that user can type it
 def load_words():
@@ -57,11 +56,6 @@ while True:
     print("1. Typing Test")
     print("2. Show Leaderboard")
     print("3. Exit")
-
-    if keyboard.is_pressed('ctrl+q'):
-        print("Exiting typing")
-        print()
-        break
 
     choices = int(input("Choose 1/2/3 : "))
     if choices==1:
