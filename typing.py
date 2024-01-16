@@ -3,6 +3,7 @@ import json
 from time import *
 import keyboard
 
+# this function is giving paragraph so that user can type it
 def load_words():
     with open("general_words.json", "w") as para:
         stories = {
@@ -19,10 +20,13 @@ def load_words():
     return write_para
 
 
+# this function is updating leaderboard
 def update_leadorboard(word_typed, total_time, wpm):
     with open("leaderboard.json", "w") as leader:
         leader_b = json.dump({"Words Typed":word_typed, "Time Taken":f"{total_time} mins", "Words Per Min": wpm }, leader)
 
+
+# this function is showing leaderboard
 def show_leaderboard():
     with open("leaderboard.json", "r") as leader:
         d = json.load(leader)
@@ -31,11 +35,12 @@ def show_leaderboard():
         print(f"{i} : {d[i]}")
 
 
+# this function will show time and speed of typing
 def typing_time(initial, end, user_para):
     starting = round(initial, 2)
     ending = round(end, 2)
     total_time_seconds = ending - starting
-    total_time_mins = round(total_time_seconds / 60, 2)
+    total_time_mins = round(total_time_seconds / 60)
 
     dist = len(user_para)
     times = ending - starting
@@ -44,7 +49,10 @@ def typing_time(initial, end, user_para):
 
     return total_time_mins , speed_wpm
 
+# it takes name of user as input
 user_name = input("Enter your name : ")
+
+# here this loop run until user doesn't want to exit from the typing game
 while True:
     print("1. Typing Test")
     print("2. Show Leaderboard")
