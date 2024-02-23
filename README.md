@@ -9,7 +9,7 @@ git clone https://github.com/karan2782/terminal-typing-master.git
 
 After this you can run this program on any code editor like Visual studio code. 
 
-## Screenshots
+#### To show leaderboard need to create Json file. In this project it is create json file by functions
 
 ![App Screenshot](https://github.com/karan2782/terminal-typing-master/blob/main/Screenshot%202024-02-23%20155143.png)
 
