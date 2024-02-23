@@ -16,3 +16,5 @@ After this you can run this program on any code editor like Visual studio code.
 This program is taking input as a name of the user. It gives random paragraph to the user for typing.
 After typing is done, then if the user press 2.It will show the leaderboard of the user.
 
+![App Screenshot](https://github.com/karan2782/terminal-typing-master/blob/main/python.webp)
+
